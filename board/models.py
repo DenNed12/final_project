@@ -11,21 +11,45 @@ class Author(models.Model):
 
 
 
-class Category(models.Model):
-    name = models.CharField(max_length=64, unique=True)
-    subscribers = models.ManyToManyField(User, related_name='subscribers')
-
-    def __str__(self):
-        return self.name
+# class Category(models.Model):
+#     subscribers = models.ManyToManyField(User, related_name='subscribers')
+#
+#     CATCHOICES = {
+#         'HL' : 'Хилы',
+#         'DD' :  'ДД',
+#         'TR' : 'Торговцы',
+#         'GD' : 'Гилдмастеры',
+#         "QG" :  'Квестгиверы',
+#         "FG" : 'Кузнецы',
+#         "LT" : "Кожевники",
+#         "PM" : "Зельевары",
+#         "SM" : "Мастера заклинаний"
+#
+#     }
+#     name = models.CharField(max_length=64, choices=CATCHOICES)
+#     def __str__(self):
+#         return self.name
 
 
 class Post(models.Model):
-    title = models.CharField(max_length=128, null=False)
+    title = models.CharField(max_length=40, null=False)
     postAuthor = models.ForeignKey(Author, on_delete=models.CASCADE)
     dateTime = models.DateTimeField(auto_now_add=True)
-    postCategory = models.ManyToManyField(Category, through='PostCategory')
-    text = models.TextField(default='Some Text')
-    content = models.FileField(null  = True)
+    CATCHOICES = {
+        'HL': 'Хилы',
+        'DD': 'ДД',
+        'TR': 'Торговцы',
+        'GD': 'Гилдмастеры',
+        "QG": 'Квестгиверы',
+        "FG": 'Кузнецы',
+        "LT": "Кожевники",
+        "PM": "Зельевары",
+        "SM": "Мастера заклинаний"
+
+    }
+    postCategory = models.CharField(default= 'None',max_length=10, choices=CATCHOICES)
+    text = models.TextField(max_length= 1000, default='Some Text')
+    content = models.FileField(null = True, blank = True)
 
     def get_absolute_url(self):
         return reverse('news_detail', args=[str(self.id)])
@@ -57,6 +81,6 @@ class Reply(models.Model):
         self.save()
 
 
-class PostCategory(models.Model):
-    postTrough = models.ForeignKey(Post, on_delete=models.CASCADE)
-    categoryTrough = models.ForeignKey(Category, on_delete = models.CASCADE)
+# class PostCategory(models.Model):
+#     postTrough = models.ForeignKey(Post, on_delete=models.CASCADE)
+#     categoryTrough = models.ForeignKey(Category, on_delete = models.CASCADE)

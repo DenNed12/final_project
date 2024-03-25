@@ -47,7 +47,9 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.yandex',
+    'django_filters',
     'board'
+
 ]
 
 MIDDLEWARE = [
@@ -127,20 +129,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+
 STATICFILES_DIRS = [
     BASE_DIR / "static",
-    "/prj/board/static/",
+
 ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-STATICFILES_DIRS = [
-    BASE_DIR / 'static'
-]
 
 
 LOGIN_REDIRECT_URL = "/board"
@@ -153,7 +151,6 @@ AUTHENTICATION_BACKENDS = [
 ]
 # email settings
 DEFAULT_FROM_EMAIL = "deonissl@yandex.ru"
-EMAIL_HOST = 'local'
 EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_PORT = 2525
 EMAIL_HOST_USER = "deonissl@yandex.ru"

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    {% load static %}
+{% load static %}
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -9,8 +9,7 @@
         <title></title>
         <!-- Favicon-->
 
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href= "static/css/styles.css" rel="stylesheet" />
+        <link href = "{% static  'css/styles.css' %}" rel = "stylesheet" />
     </head>
     <body>
         <!-- Responsive navbar-->
@@ -35,9 +34,28 @@
                 </div>
             </div>
         </nav>
-        <!-- Page content-->
-        </div>
+        {% block content %}
+        {% endblock content %}
 
+     {% if page_obj.has_previous %}
+       <a href="?page=1">1</a>
+       {% if page_obj.previous_page_number != 1 %}
+           ...
+           <a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>
+       {% endif %}
+   {% endif %}
+
+   {# Информация о текущей странице #}
+   {{ page_obj.number }}
+
+   {# Информация о следующих страницах #}
+   {% if page_obj.has_next %}
+       <a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a>
+       {% if paginator.num_pages != page_obj.next_page_number %}
+           ...
+           <a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
+       {% endif %}
+   {% endif %}
 
 
     </body>
