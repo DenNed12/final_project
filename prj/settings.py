@@ -27,6 +27,10 @@ SECRET_KEY = 'django-insecure-&8i%^(s^$#%6@2#bn7oy_3r8=k_l#gu0g_#!z0z1-mwe!&0#tl
 DEBUG= True
 
 ALLOWED_HOSTS = []
+USE_I18N = True
+USE_L10N = False
+LANGUAGE_CODE = 'ru-RU'
+DATE_FORMAT = 'd E Y'
 
 STATIC_URL = '/static/'
 MEDIA_ROOT = 'media/'

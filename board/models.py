@@ -11,24 +11,6 @@ class Author(models.Model):
 
 
 
-# class Category(models.Model):
-#     subscribers = models.ManyToManyField(User, related_name='subscribers')
-#
-#     CATCHOICES = {
-#         'HL' : 'Хилы',
-#         'DD' :  'ДД',
-#         'TR' : 'Торговцы',
-#         'GD' : 'Гилдмастеры',
-#         "QG" :  'Квестгиверы',
-#         "FG" : 'Кузнецы',
-#         "LT" : "Кожевники",
-#         "PM" : "Зельевары",
-#         "SM" : "Мастера заклинаний"
-#
-#     }
-#     name = models.CharField(max_length=64, choices=CATCHOICES)
-#     def __str__(self):
-#         return self.name
 
 
 class Post(models.Model):

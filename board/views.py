@@ -1,9 +1,8 @@
-from django.shortcuts import render
-from django.views.generic import ListView,DetailView
+from .forms import PostForm
+from django.views.generic import ListView,DetailView,CreateView,UpdateView, DeleteView
 from .models import Post, Reply
-from django.contrib.auth.decorators import login_required
-from datetime import datetime
 from .filters import  PostFilter
+from django.urls import reverse_lazy
 
 # Create your views here.
 class PostList(ListView):
@@ -32,3 +31,20 @@ class PostDetail(DetailView):
 
 
 
+class PostCreate( CreateView):
+    form_class = PostForm
+    model = Post
+    template_name = 'post_create.html'
+
+
+
+class PosttUpdate(UpdateView):
+    form_class = PostForm
+    model = Post
+    template_name = 'post_edit.html'
+
+
+class PostDelete(DeleteView):
+    model = Post
+    template_name = 'post_delete.html'
+    success_url = reverse_lazy('posts')
