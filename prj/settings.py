@@ -28,13 +28,13 @@ DEBUG= True
 
 ALLOWED_HOSTS = []
 USE_I18N = True
-USE_L10N = False
-LANGUAGE_CODE = 'ru-RU'
+USE_TZ = True
+TIME_ZONE = 'Europe/Moscow'
+LANGUAGE_CODE = 'ru'
 DATE_FORMAT = 'd E Y'
 
 STATIC_URL = '/static/'
-MEDIA_ROOT = 'media/'
-MEDIA_URL = '/media/'
+
 
 # Application definition
 
@@ -121,14 +121,6 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-
-USE_I18N = True
-
-USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
@@ -156,11 +148,14 @@ AUTHENTICATION_BACKENDS = [
 # email settings
 DEFAULT_FROM_EMAIL = "deonissl@yandex.ru"
 EMAIL_HOST = 'smtp.yandex.ru'
-EMAIL_PORT = 2525
+EMAIL_PORT = 465
 EMAIL_HOST_USER = "deonissl@yandex.ru"
 EMAIL_HOST_PASSWORD = "password"
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+SERVER_EMAIL = "deonissl@yandex.ru"
+
 
 # auth settings
 ACCOUNT_EMAIL_REQUIRED = True
@@ -168,5 +163,9 @@ ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_EMAIL_CONFIRMATION_REQUIRED= True
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
-ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_FORMS = {"signup": "accounts.forms.CustomSignupForm"}
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'

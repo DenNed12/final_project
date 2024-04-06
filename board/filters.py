@@ -8,7 +8,7 @@ class PostFilter(FilterSet):
                                 label='Category',
                                 empty_label='Select a category')
     added_after = DateTimeFilter(
-        field_name='added_at',
+        label='added_at',
         lookup_expr='gt',
         widget=DateTimeInput(
             format='%Y-%m-%dT%H:%M',

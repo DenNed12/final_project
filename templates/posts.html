@@ -27,8 +27,8 @@
 
            {% for post in posts %}
            <tr>
-                <td>{{ post.content}}</td>
-               <td>{{ post.title}}</td>
+                <td><img src="{{post.content}}" alt="{{post.content}}"> </td>
+               <td> <a href="{% url 'post_detail' post.pk  %}">{{ post.title}} </a></td>
                <td>{{ post.dateTime }}</td>
                <td>{{ post.postAuthor }}</td>
                  <td>{{ post.get_postCategory_display}}

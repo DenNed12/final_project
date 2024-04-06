@@ -9,10 +9,6 @@ class Author(models.Model):
     authorUser = models.OneToOneField(User,on_delete= models.CASCADE)
 
 
-
-
-
-
 class Post(models.Model):
     title = models.CharField(max_length=40, null=False)
     postAuthor = models.ForeignKey(Author, on_delete=models.CASCADE)
@@ -63,6 +59,3 @@ class Reply(models.Model):
         self.save()
 
 
-# class PostCategory(models.Model):
-#     postTrough = models.ForeignKey(Post, on_delete=models.CASCADE)
-#     categoryTrough = models.ForeignKey(Category, on_delete = models.CASCADE)
