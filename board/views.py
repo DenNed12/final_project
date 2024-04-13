@@ -66,7 +66,7 @@ class UserPostList(LoginRequiredMixin, ListView):
     paginate_by = 4
 
     def get_queryset(self):
-        queryset = Post.objects.filter(postAuthor=self.request.user)
+        queryset = Post.objects.filter(postAuthor=self.request.user.author)
         self.filterset = PostFilter(self.request.GET, queryset)
         return self.filterset.qs
 

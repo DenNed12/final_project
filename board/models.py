@@ -1,12 +1,15 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
 from django.urls import reverse
 from django.core.cache import cache
 
-
+User = settings.AUTH_USER_MODEL
 
 class Author(models.Model):
     authorUser = models.OneToOneField(User,on_delete= models.CASCADE)
+
+
+
 
 
 class Post(models.Model):

@@ -1,0 +1,16 @@
+{%extends"allauth/layouts/entrance.html"%}
+{%loadi18n%}
+{%loadallauth%}
+{%blockhead_title%}
+{%transАккаунт не активирован"%}
+{%endblockhead_title%}
+{%blockcontent%}
+    <h1>Введите кодактивации</h1>
+<form action="{%url'confirm_user'%}" method="post">
+        {%csrf_token%}
+    <label>
+     <input class='text' type="text" name="code" placeholder="Введитекод активации">
+   </label>
+<input type="submit" value="Подтвердить">
+ </form>
+{%endblockcontent%}
